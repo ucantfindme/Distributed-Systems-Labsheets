@@ -1,0 +1,14 @@
+rpcgen add.x
+
+gcc -c serverproc.c -w
+gcc -c add_svc.c -w
+gcc -c add_xdr.c -w
+gcc -o server serverproc.o add_svc.o add_xdr.o -w
+
+gcc -c client.c -w
+gcc -c add_clnt.c -w
+gcc -c add_xdr.c -w
+gcc -o client client.o add_clnt.o add_xdr.o -w
+
+./server
+./client 127.0.0.1 34 47
