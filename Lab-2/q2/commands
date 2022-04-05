@@ -1,0 +1,14 @@
+rpcgen cal.x
+
+gcc -c serverproc.c -w
+gcc -c cal_svc.c -w
+gcc -c cal_xdr.c -w
+gcc -o server serverproc.o cal_svc.o cal_xdr.o -w
+
+gcc -c client.c -w
+gcc -c cal_clnt.c -w
+gcc -c cal_xdr.c -w
+gcc -o client client.o cal_clnt.o cal_xdr.o -w
+
+./server
+./client 127.0.0.1 34 47
