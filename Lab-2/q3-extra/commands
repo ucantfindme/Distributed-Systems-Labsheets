@@ -1,0 +1,22 @@
+rpcgen paper.x
+
+gcc -c paperserver.c -w
+gcc -c paper_svc.c -w
+gcc -c paper_xdr.c -w
+gcc -o paperserver paperserver.o paper_svc.o paper_xdr.o -w
+
+gcc -c paperclient.c -w
+gcc -c paper_clnt.c -w
+gcc -c paper_xdr.c -w
+gcc -o paperclient paperclient.o paper_clnt.o paper_xdr.o -w
+
+./paperserver
+./paperclient add 127.0.0.1 pavan dog qwertyu
+./paperclient add 127.0.0.1 sai cat qwqwdsgwgqwrb
+./paperclient add 127.0.0.1 krishna horse vnjdhikjkjsndo
+./paperclient add 127.0.0.1 nagam lion aegbsgzsdgssgdfd
+
+./paperclient list 127.0.0.1
+
+./paperclient detail 127.0.0.1 2
+./paperclient fetch 127.0.0.1 1
